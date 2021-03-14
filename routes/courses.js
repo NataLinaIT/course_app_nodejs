@@ -5,8 +5,8 @@ const router = Router();
 router.get("/", async (req, res) => {
   const courses = await Course.find()
     .populate("userId")
-    .select("email name img");
-    
+    .select("title email name img price");
+
   res.render("courses", {
     title: "Courses",
     isCourses: true,
