@@ -1,6 +1,7 @@
 .nav-wrapper {
   padding: 0 2rem;
 }
+
 .price {
   font-size: 2rem;
 }
@@ -17,7 +18,7 @@
 }
 
 .course img {
-  min-width: 600px;
+  max-width: 600px;
   height: auto;
 }
 
@@ -29,4 +30,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.course-form {
+  margin-bottom: 2rem;
 }

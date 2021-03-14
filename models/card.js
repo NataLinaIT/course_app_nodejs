@@ -4,30 +4,30 @@ const fs = require("fs");
 const p = path.join(
   path.dirname(process.mainModule.filename),
   "data",
-  "cart.json"
+  "card.json"
 );
 
-class Cart {
+class Card {
   static async add(course) {
-    const cart = await Cart.fetch();
+    const card = await Card.fetch();
 
-    const idx = cart.courses.findIndex((c) => c.id === course.id);
-    const candidate = cart.courses[idx];
+    const idx = card.courses.findIndex((c) => c.id === course.id);
+    const candidate = card.courses[idx];
 
     if (candidate) {
       // курс уже есть
       candidate.count++;
-      cart.courses[idx] = candidate;
+      card.courses[idx] = candidate;
     } else {
       // нужно добавить курс
       course.count = 1;
-      cart.courses.push(course);
+      card.courses.push(course);
     }
 
-    cart.price += +course.price;
+    card.price += +course.price;
 
     return new Promise((resolve, reject) => {
-      fs.writeFile(p, JSON.stringify(cart), (err) => {
+      fs.writeFile(p, JSON.stringify(card), (err) => {
         if (err) {
           reject(err);
         } else {
@@ -38,27 +38,27 @@ class Cart {
   }
 
   static async remove(id) {
-    const cart = await Cart.fetch();
+    const card = await Card.fetch();
 
-    const idx = cart.courses.findIndex((c) => c.id === id);
-    const course = cart.courses[idx];
+    const idx = card.courses.findIndex((c) => c.id === id);
+    const course = card.courses[idx];
 
     if (course.count === 1) {
-      // remove
-      cart.courses = cart.courses.filter((c) => c.id !== id);
+      // удалить
+      card.courses = card.courses.filter((c) => c.id !== id);
     } else {
-      // change qtt
-      cart.courses[idx].count--;
+      // изменить количество
+      card.courses[idx].count--;
     }
 
-    cart.price -= course.price;
+    card.price -= course.price;
 
     return new Promise((resolve, reject) => {
-      fs.writeFile(p, JSON.stringify(cart), (err) => {
+      fs.writeFile(p, JSON.stringify(card), (err) => {
         if (err) {
           reject(err);
         } else {
-          resolve(cart);
+          resolve(card);
         }
       });
     });
@@ -77,4 +77,4 @@ class Cart {
   }
 }
 
-module.exports = Cart;
+module.exports = Card;
