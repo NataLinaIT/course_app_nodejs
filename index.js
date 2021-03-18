@@ -13,10 +13,10 @@ const coursesRoutes = require("./routes/courses");
 const orderRoutes = require("./routes/orders");
 const authRoutes = require("./routes/auth");
 const userMiddleware = require("./middleware/user");
-
+const keys = require("./keys");
 const varMiddleware = require("./middleware/variables");
 
-const MONGODB_URI = `mongodb+srv://nch:rRF9ijUcRLBB1m8P@cluster0.6mwc1.mongodb.net/shop`;
+const MONGODB_URI = keys.MONGODB_URI;
 const app = express();
 
 const hbs = exphbs.create({
@@ -26,7 +26,7 @@ const hbs = exphbs.create({
 
 const store = new MongoStore({
   collection: "sessions",
-  uri: MONGODB_URI,
+  uri: keys.MONGODB_URI,
 });
 
 app.engine("hbs", hbs.engine);
@@ -37,7 +37,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(
   session({
-    secret: "some secret value",
+    secret: keys.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store,
