@@ -15,7 +15,7 @@
 * multer
 * helmet
 * compression
-* app.sendgrid.com/
+* app.sendgrid.com
 
 ## Available Scripts
 
@@ -30,16 +30,23 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ## Project features
 
+- sign up/sign in form validation
+- access restore
+
 ### Not authorized user
 - course list access
 - create an account
 - sign in 
 
 ### Authorized user
+- user profile
+- add/chenge user image 
 - course list access
 - edit, delete course
 - add/remove course to/from cart
 - make an order
 - access to orders page
 
-
+###Emails
+- sign up confirmation
+- access restore
