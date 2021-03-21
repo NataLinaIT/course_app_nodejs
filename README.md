@@ -7,8 +7,15 @@
 * express-handlebars
 * bcryptjs
 * connect-flash
+* express-validator
 * connect-mongodb-session
 * csurf
+* nodemailer
+* nodemailer-sendgrid-transport
+* multer
+* helmet
+* compression
+* app.sendgrid.com/
 
 ## Available Scripts
 

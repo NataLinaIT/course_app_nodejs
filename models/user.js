@@ -8,8 +8,11 @@ const userSchema = new Schema({
   name: String,
   password: {
     type: String,
-    required: true
+    required: true,
   },
+  avatarUrl: String,
+  resetToken: String,
+  resetTokenExp: Date,
   cart: {
     items: [
       {
